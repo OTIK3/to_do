@@ -1,16 +1,14 @@
 package com.menti.to_do.models;
 
 import com.menti.to_do.enums.TaskStatusEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
+@Table(name = "tasks")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,9 +23,11 @@ public class TaskEntity {
     private String name;
 
     private String description;
-    
+
+    @Column(name = "time_limit")
     private LocalDate timeLimit;
 
+    @Enumerated(value = EnumType.STRING)
     @Builder.Default
     private TaskStatusEnum status = TaskStatusEnum.TODO;
 
