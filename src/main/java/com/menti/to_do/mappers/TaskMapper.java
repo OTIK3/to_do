@@ -16,6 +16,7 @@ public interface TaskMapper {
     TaskRequest toRequest(TaskEntity entity);
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "status", ignore = true)
     TaskEntity toEntity(TaskRequest taskRequest);
 
     @Mapping(target = "id", ignore = true)
